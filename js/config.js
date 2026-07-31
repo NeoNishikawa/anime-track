@@ -1,5 +1,7 @@
+// config.js
 const CONFIG = {
-    BACKEND_URL: "http://localhost:3000",
+    // Kosongkan agar menggunakan domain yang sama dengan frontend
+    BACKEND_URL: "",
     STORAGE_KEY: "animeTodoList",
     CACHE_PREFIX: "animeCache_",
     CACHE_TTL: 1000 * 60 * 60,
