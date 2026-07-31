@@ -2,6 +2,9 @@
 // API — SEMUA DATA DARI YAOIAPI (via backend)
 // ============================================================
 
+// Tentukan base URL: jika BACKEND_URL kosong, pakai origin dari browser
+const baseUrl = CONFIG.BACKEND_URL || window.location.origin;
+
 const YaoiAPI = {
     // ---------- PENCARIAN ----------
     async searchAnime(query) {
@@ -13,9 +16,8 @@ const YaoiAPI = {
         if (cached) return { data: cached, error: null };
 
         try {
-            const url = new URL(`${CONFIG.BACKEND_URL}/api/animes`);
-            url.searchParams.set('search', q);
-            url.searchParams.set('page', '1');
+            // Gunakan string concatenation biasa, bukan new URL()
+            const url = `${baseUrl}/api/animes?search=${encodeURIComponent(q)}&page=1`;
             const res = await fetch(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const json = await res.json();
@@ -35,7 +37,8 @@ const YaoiAPI = {
         if (cached) return { data: cached, error: null };
 
         try {
-            const res = await fetch(`${CONFIG.BACKEND_URL}/api/anime/${slug}`);
+            const url = `${baseUrl}/api/anime/${slug}`;
+            const res = await fetch(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const json = await res.json();
             if (json.error) throw new Error(json.error);
@@ -49,28 +52,29 @@ const YaoiAPI = {
 
     // ---------- STREAMING BULK ----------
     async fetchAllStreams(title, totalEpisodes, slug = null) {
-    if (!title || !totalEpisodes) return { data: null, error: 'Parameter tidak lengkap' };
+        if (!title || !totalEpisodes) return { data: null, error: 'Parameter tidak lengkap' };
 
-    const cacheKey = `streams_${(slug || title).toLowerCase().replace(/\s/g, '_')}`;
-    const cached = Storage.getCache(cacheKey);
-    if (cached) return { data: cached, error: null };
+        const cacheKey = `streams_${(slug || title).toLowerCase().replace(/\s/g, '_')}`;
+        const cached = Storage.getCache(cacheKey);
+        if (cached) return { data: cached, error: null };
 
-    try {
-        const res = await fetch(`${CONFIG.BACKEND_URL}/api/streams/bulk`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title, totalEpisodes, slug }),
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const json = await res.json();
-        if (json.error) throw new Error(json.error);
-        Storage.setCache(cacheKey, json.data);
-        return { data: json.data, error: null };
-    } catch (err) {
-        console.error('Stream error:', err);
-        return { data: null, error: err.message };
-    }
-},
+        try {
+            const url = `${baseUrl}/api/streams/bulk`;
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, totalEpisodes, slug }),
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const json = await res.json();
+            if (json.error) throw new Error(json.error);
+            Storage.setCache(cacheKey, json.data);
+            return { data: json.data, error: null };
+        } catch (err) {
+            console.error('Stream error:', err);
+            return { data: null, error: err.message };
+        }
+    },
 
     // ---------- JADWAL TAYANG HARI INI ----------
     async fetchTodaySchedule() {
@@ -79,7 +83,8 @@ const YaoiAPI = {
         if (cached) return { data: cached, error: null };
 
         try {
-            const res = await fetch(`${CONFIG.BACKEND_URL}/api/schedule`);
+            const url = `${baseUrl}/api/schedule`;
+            const res = await fetch(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const json = await res.json();
             if (json.error) throw new Error(json.error);
@@ -102,5 +107,5 @@ const YaoiAPI = {
     },
 };
 
-// Untuk kompatibilitas (beberapa file masih pakai nama AniListAPI)
+// Untuk kompatibilitas
 const AniListAPI = YaoiAPI;
