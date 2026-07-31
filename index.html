@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Tracker — To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="parent">
+
+        <!-- HEADER (dulu .nav) -->
+        <header class="header">
+            <div class="header-brand">
+                <span class="brand-dot"></span>
+                <h1>Anime Tracker</h1>
+            </div>
+
+            <div class="header-search">
+                <input type="text" class="search-input" placeholder="Cari anime... (misal: Frieren, Tensura)" autocomplete="off">
+                <div class="search-results"></div>
+            </div>
+
+            <nav class="header-filters">
+                <button class="filter-tab active" data-status="all">Semua</button>
+                <button class="filter-tab" data-status="watching">Watching</button>
+                <button class="filter-tab" data-status="plan_to_watch">Plan to Watch</button>
+                <button class="filter-tab" data-status="completed">Completed</button>
+                <button class="filter-tab" data-status="today">Tayang Hari Ini</button>
+            </nav>
+        </header>
+
+        <!-- TIMER / SCHEDULE PANEL -->
+        <section class="timer">
+            <div class="panel-head">
+                <h3>Tayang Hari Ini</h3>
+                <span class="day-badge" id="dayBadge">-</span>
+            </div>
+            <div class="schedule-list" id="scheduleList">
+                <p class="empty">Memuat jadwal...</p>
+            </div>
+        </section>
+
+        <!-- MAIN LIST (TO-DO USER) -->
+        <section class="main-list">
+            <div class="panel-head">
+                <h3 id="mainListTitle">Anime Saya</h3>
+                <span class="count-badge" id="countBadge">0</span>
+            </div>
+            <div class="anime-grid" id="animeGrid">
+                <div class="empty-state">
+                    <p class="empty-title">Belum ada anime di sini</p>
+                    <p class="empty-sub">Ketik judul di kolom pencarian atas buat mulai nambahin anime ke list kamu.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

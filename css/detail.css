@@ -1,0 +1,345 @@
+/* ===========================================================
+   DETAIL PAGE STYLE — pakai variabel warna dari style.css
+=========================================================== */
+
+.detail-body {
+    padding: 0;
+}
+
+.detail-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 16px 60px;
+}
+
+.detail-topbar {
+    padding: 10px 0 16px;
+}
+
+.back-link {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    color: var(--coral);
+}
+
+.detail-loading, .detail-error {
+    color: var(--text-dim);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+/* ---------- HERO ---------- */
+.detail-hero {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.detail-banner {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.detail-hero-content {
+    display: flex;
+    gap: 18px;
+    padding: 18px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-top: none;
+}
+
+.detail-cover {
+    width: 130px;
+    height: 185px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-top: -60px;
+    border: 3px solid var(--panel);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.detail-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.detail-tag {
+    background: var(--coral-dim);
+    color: var(--coral);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.detail-meta-line {
+    color: var(--text-dim);
+    font-size: 0.82rem;
+}
+
+.detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+}
+
+.detail-status-select {
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.detail-add-btn, .detail-remove-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.detail-add-btn {
+    background: var(--coral);
+    color: #1a0a0d;
+}
+
+.detail-remove-btn {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: #ff8f8f;
+}
+
+.site-link {
+    color: var(--coral);
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.site-link:hover {
+    text-decoration: underline;
+}
+
+.watch-platforms {
+    margin-top: 4px;
+}
+
+.watch-platforms-label {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+
+.watch-platforms-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.platform-btn {
+    background: var(--coral);
+    color: #1a0a0d;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 9px 16px;
+    border-radius: 8px;
+    transition: opacity 0.15s ease;
+}
+
+.platform-btn:hover {
+    opacity: 0.85;
+}
+
+/* ---------- SECTIONS ---------- */
+.detail-section {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 18px;
+}
+
+.detail-section h3 {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.detail-desc {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+/* ---------- TRAILER ---------- */
+.trailer-frame-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.trailer-frame-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ---------- PROGRESS BAR ---------- */
+.progress-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progress-count {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+.progress-bar-track {
+    background: var(--bg);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.progress-bar-fill {
+    background: var(--coral);
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.2s ease;
+}
+
+/* ---------- EPISODE LIST ---------- */
+.episode-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+.episode-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 8px 10px;
+}
+
+.episode-row.watched {
+    border-color: var(--coral);
+}
+
+.episode-thumb {
+    width: 72px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: var(--panel-border);
+}
+
+.episode-num {
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    font-weight: 600;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.episode-title {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.episode-watch-link {
+    font-size: 0.72rem;
+    color: var(--coral);
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.episode-watch-link.disabled {
+    color: var(--text-faint);
+    pointer-events: none;
+}
+
+.episode-watched-toggle {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--coral);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.episode-list::-webkit-scrollbar {
+    width: 6px;
+}
+.episode-list::-webkit-scrollbar-thumb {
+    background: var(--panel-border);
+    border-radius: 999px;
+}
+
+@media (max-width: 600px) {
+    .detail-hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .detail-cover {
+        margin-top: -80px;
+    }
+    .detail-tags, .detail-actions {
+        justify-content: center;
+    }
+}

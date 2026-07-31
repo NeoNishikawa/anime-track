@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonton Anime — Anime Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/watch.css">
+</head>
+<body>
+
+    <div class="watch-container">
+
+        <!-- NAVIGASI -->
+        <nav class="watch-nav">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link">Home</a>
+                <span class="nav-separator">|</span>
+                <a href="#" class="nav-link" id="backToDetail">← Kembali ke Detail</a>
+            </div>
+            <div class="nav-right">
+                <span class="anime-title-nav" id="watchAnimeTitle">Loading...</span>
+            </div>
+        </nav>
+
+        <!-- VIDEO PLAYER -->
+        <div class="video-section">
+            <div class="video-wrapper">
+                <iframe id="videoPlayer" src="" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+                <span id="currentEpisodeLabel">Episode 1</span>
+            </div>
+        </div>
+
+        <!-- DAFTAR EPISODE -->
+        <div class="episode-section">
+            <div class="episode-header">
+                <h3>Daftar Episode</h3>
+                <span class="eps-count" id="epsCount">0 / 0</span>
+            </div>
+            <div class="episode-list" id="episodeList">
+                <p class="empty">Memuat episode...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/watch.js"></script>
+</body>
+</html>

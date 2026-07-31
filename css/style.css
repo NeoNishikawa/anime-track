@@ -1,0 +1,491 @@
+/* ===========================================================
+   ANIME TRACKER — STYLE
+   Font: Sora (display / judul) + Inter (body / UI)
+   Palette: dark navy base, coral accent, soft slate for meta
+=========================================================== */
+
+:root {
+    --bg: #0d0f16;
+    --panel: #151824;
+    --panel-border: #232738;
+    --coral: #ff5c72;
+    --coral-dim: rgba(255, 92, 114, 0.15);
+    --text: #eef0f6;
+    --text-dim: #8b90a3;
+    --text-faint: #565b6e;
+    --radius: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+h1, h3 {
+    font-family: 'Sora', system-ui, sans-serif;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, minmax(56px, 1fr));
+    gap: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ================= HEADER ================= */
+.header {
+    grid-column: span 10 / span 10;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 20px;
+    flex-wrap: wrap;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 0 12px var(--coral);
+}
+
+.header h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--coral);
+    white-space: nowrap;
+}
+
+.header-search {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+}
+
+.search-input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 999px;
+    padding: 10px 18px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.search-input:focus {
+    border-color: var(--coral);
+}
+
+.search-input::placeholder {
+    color: var(--text-faint);
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    max-height: 340px;
+    overflow-y: auto;
+    z-index: 50;
+    display: none;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: var(--coral-dim);
+}
+
+.search-result-item img {
+    width: 36px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.search-result-info span {
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.search-result-info small {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+}
+
+.search-result-item .add-icon {
+    margin-left: auto;
+    color: var(--coral);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.search-empty, .search-loading {
+    padding: 14px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.header-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: var(--text-dim);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.filter-tab:hover {
+    border-color: var(--coral);
+    color: var(--text);
+}
+
+.filter-tab.active {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: #1a0a0d;
+    font-weight: 600;
+}
+
+/* ================= PANELS (shared) ================= */
+.timer, .main-list {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.timer {
+    grid-column: span 2 / span 2;
+    grid-row: span 7 / span 7;
+    grid-row-start: 2;
+}
+
+.main-list {
+    grid-column: span 8 / span 8;
+    grid-row: span 7 / span 7;
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.panel-head h3 {
+    font-size: 0.95rem;
+    color: var(--text);
+}
+
+.day-badge, .count-badge {
+    background: var(--coral-dim);
+    color: var(--coral);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+/* ================= SCHEDULE (timer) ================= */
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schedule-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+}
+
+.schedule-item:hover {
+    border-color: var(--coral);
+}
+
+.schedule-item img {
+    width: 40px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.schedule-info {
+    min-width: 0;
+}
+
+.schedule-title {
+    font-size: 0.78rem;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.schedule-time {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+/* ================= ANIME GRID (main-list) ================= */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 14px;
+}
+
+.anime-card {
+    background: var(--bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.anime-card:hover {
+    border-color: var(--coral);
+    transform: translateY(-2px);
+}
+
+.anime-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background: var(--panel-border);
+}
+
+.anime-card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.anime-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.6em;
+}
+
+.anime-meta {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+}
+
+.status-select {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.remove-btn {
+    background: transparent;
+    border: 1px solid var(--panel-border);
+    color: #ff8f8f;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    margin-top: auto;
+    transition: all 0.15s ease;
+}
+
+.remove-btn:hover {
+    background: #ff8f8f;
+    color: #1a0a0d;
+    border-color: #ff8f8f;
+}
+
+
+/* Tayang Hari Ini card di dalam main-list (mode filter "today") */
+.today-card .add-btn {
+    background: var(--coral);
+    border: none;
+    color: #1a0a0d;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.today-card .add-btn:disabled {
+    background: var(--panel-border);
+    color: var(--text-faint);
+    cursor: default;
+}
+
+/* ================= EMPTY / LOADING STATES ================= */
+.empty {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    padding: 8px 0;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.empty-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.empty-sub {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Scrollbar tipis biar rapi */
+.timer::-webkit-scrollbar, .main-list::-webkit-scrollbar, .search-results::-webkit-scrollbar {
+    width: 6px;
+}
+.timer::-webkit-scrollbar-thumb, .main-list::-webkit-scrollbar-thumb, .search-results::-webkit-scrollbar-thumb {
+    background: var(--panel-border);
+    border-radius: 999px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .parent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .header, .timer, .main-list {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+}
+@media (max-width: 1200px) {
+    .anime-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media (max-width: 900px) {
+    .anime-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.search-add-btn {
+    background: var(--coral);
+    border: none;
+    color: #1a0a0d;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto;
+    width: 100%;
+    transition: transform 0.3s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.3s;
+    transform: translateX(0);
+    opacity: 1;
+}
+.search-add-btn:disabled {
+    background: var(--panel-border);
+    color: var(--text-faint);
+    cursor: default;
+}
